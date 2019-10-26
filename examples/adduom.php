@@ -1,10 +1,4 @@
 <!DOCTYPE html>
-<html>
-<head>
-<title>Inventory</title>
-</head>
-<body>
- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -13,7 +7,7 @@
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Cancel
+    Spoilage
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -22,6 +16,8 @@
   <!-- CSS Files -->
   <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
   <link href="../assets/css/paper-dashboard.css" rel="stylesheet" />
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+  <link href="../assets/demo/demo.css" rel="stylesheet" />
 </head>
 
 <body class="">
@@ -51,7 +47,7 @@
               <p>Dashboard</p>
             </a>
           </li>
-          <li class = "active">
+          <li>
             <a href="./Inventory.php">
               <i class="nc-icon nc-tile-56"></i>
               <p>Inventory</p>
@@ -63,7 +59,7 @@
               <p>Menu</p>
             </a>
           </li>
-          <li>
+          <li class = "active">
             <a href="./spoilage.php">
               <i class="nc-icon nc-tile-56"></i>
               <p>Spoilage</p>
@@ -166,191 +162,49 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title">Inventory</h4>
+                <h4 class="card-title">Add Measurement</h4>
               </div>
-            <div class="row">
-              <div class="update ml-auto mr-auto">
-                <button class="btn btn-primary btn-round" onclick="openForm()">Add New Item</button>
-                <button class="btn btn-primary btn-round" onclick="openForms()">Add Quantity</button>
-                <div class="addNewItem" id="myForm" >
-                      <form action="insert.php" method="POST">
-                             <table>
-                              <h3>Add Item<h3>
-                <tr>
-                  <td> 
-                    Item Name :
-                  </td>
-                  <td>
-                    <input type ="text" name="itemname" required>
-                  </td> 
-                </tr>
-                <tr>
-                  <td>
-                    Category :
-                  </td>
-                  <td>
-                    <select name = "category">
-                    <option value = "" disabled selected>Select Category</option>
-                    <option value="wet goods" required>Wet Goods
-                    <option value="dry goods" required>Dry Goods
-                    <option value="groceries" required>Groceries
-                    <option value="can goods" required>Can Goods
-                  </select>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    Unit of Measurement :
-                  </td>
-                  <td>
-                  <?php
-                    $mysqli = NEW MYSQLi('localhost', 'root','','finaldatabase');
-                    $resultSet = $mysqli->query("SELECT uom_add from adduom"); 
-                    ?>
-                    <select name = "unitofmeasurement" onmousedown = "if(this.options.length>5){this.size=5;}" onchange = "this.blur()" onblur="this.size=0;">
-                    <option value = "" disabled selected>Select UOM</option>
-                    <?php
-                    while($rows = $resultSet->fetch_assoc()){
-                      $uom_add = $rows['uom_add'];
-                      echo "<option value ='$uom_add'>$uom_add</option>";
-                    }
-                    ?>
-                  </select>
-                  <a href = "adduom.php"><img src = "../image/plus.png" style = "width: 22px"></a>
-                  <a href="deleteuom.php"><img src="../image/garbage.png" style="width: 22px"></a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    
-          <button type="submit" class="btn btn-primary btn-round">Save</button>
-                    <a href = "Inventory.php"><button type="button" class="btn btn-primary btn-round">Cancel</button></a>
-                            </td>
-          </tr>
-              </form>
-      </table>
-                </div>
-                  <script>
-                    function openForm() {
-                      document.getElementById("myForm").style.display = "block";
-                    }
-
-                    function closeForm() {
-                      document.getElementById("myForm").style.display = "none";
-                    }
-                  </script>
-              </div>
-               <div class="addNewItem" id="myForms" >
-                  <form action="addq.php" method="POST">
-                             <table>
-                              <tr>
-                              <td>
-                  Category:
-                  </td>
-                  <td>
-                    <select name = "category">
-                    <option value="wet goods" required>Wet Goods
-                    <option value="dry goods" required>Dry Goods
-                    <option value="groceries" required>Groceries
-                    <option value="can goods" required>Can Goods
-                  </select>
-                  </td>
-                </tr>
-                <tr>
-                  <td> 
-                    Item Name:
-                  </td>
-                  <td>
-                    <input type ="text" name="itemname" required>
-                  </td> 
-                </tr>
-                <tr>
-                  <td>
-                    Quantity:
-                  </td>
-                  <td>
-                    <input type = "text" name="quantity" required>
-                  </td>
-                </tr>
-                  <td>
-                    
-                    <button type="submit" class="btn btn-primary btn-round">Save</button>
-                    <a href = "Inventory.php"><button type="button" class="btn btn-primary btn-round">Cancel</button></a>
-                            </td>
-          </tr>
-              </form>
-      </table>
-
-                  <script>
-                    function openForms() {
-                      document.getElementById("myForms").style.display = "block";
-                    }
-
-                    function closeForms() {
-                      document.getElementById("myForms").style.display = "none";
-                    }
-                  </script>
+              <div class="col-md-3 px-1">
+              <div class="form-group">
               </div>
             </div>
-                <label>Show per page</label>
-                 <div class="col-md-3 px-1">
-                <select id = "page" class="form-control" placeholder="Number" value=" ">
-                  <option value = "1">5</option>
-                  <option value = "2">10</option>
-                  <option value = "3">15</option>
-                  <option value = "4">20</option>
-                </select>
-              </div>
               <div class="card-body">
-            <div class="table-responsive">
-                  <table class="table">
-
-               
-                      <th>
-                        ID
-                      </th>
-                      <th>
-                        Item Name
-                      </th>
-                      <th>
-                        Category
-                      </th>
-                      <th>
-                        Quantity
-                      </th>
-                      <th>
-                        Unit of Measurement
-                      </th>
-                            <tbody>
+        <div class="table-responsive">
+          <form action = "uomadd.php" method="POST">
+                <tr>
+                  <td> 
+                    Measurement :
+                  </td>
+                  <td>
+                    <input type ="text" name="uom_add">
+                  </td> 
+                  <td>
+                    <button type="submit" class="btn btn-primary btn-round">Save</button>
+                    <button type="cancel" class="btn btn-primary btn-round">Cancel</button> 
+                  </td>
+                </tr>
+              </form>
     <?php
     $conn = mysqli_connect("localhost","root", "", "finaldatabase");
     if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
     }
     
-    $sql = "SELECT id, itemname, category, quantity, unitofmeasurement from inventory";
+    $sql = "SELECT uom_add from adduom";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-    echo "<tr><td>" . $row["id"]. "</td><td>" . $row["itemname"] . "</td><td>"
-    . $row["category"]. "</td><td>" . $row["quantity"]. "</td><td>" . $row["unitofmeasurement"]. "</td></tr>";
-    }
-    echo "</table>";
     } else { echo "0 results"; }
     $conn->close();
     ?>
-  </tbody>
-                  </table>
-            </div>
+              </div>
+            </div> 
               </div>
             </div>
           </div>
-          
+        </div>
       </div>
     </div>
   </div>
-  
 
   <!--   Core JS Files   -->
   <script src="../assets/js/core/jquery.min.js"></script>
@@ -367,13 +221,6 @@
   <script src="../assets/js/paper-dashboard.min.js?v=2.0.0" type="text/javascript"></script>
   <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
   <script src="../assets/demo/demo.js"></script>
-</body>
-
-</html>
-
-              
-
-                
 </body>
 
 </html>

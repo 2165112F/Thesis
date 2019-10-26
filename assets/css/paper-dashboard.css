@@ -6487,7 +6487,6 @@ License - nucleoapp.com/license/
   margin-bottom:10px;
   opacity: 0.8;
 }
-
 /* Add a red background color to the cancel button */
 .form-container .cancel {
   background-color: red;
@@ -6497,4 +6496,9 @@ License - nucleoapp.com/license/
 .form-container .btn:hover, .open-button:hover {
   opacity: 1;
 }
+}
+.myDropDown {
+height:auto;
+max-height: 200px;
+overflow-x: hidden;
 }
