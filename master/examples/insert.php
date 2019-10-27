@@ -1,6 +1,9 @@
 <?php
-$uom_add = $_POST['uom_add'];
-if (!empty($uom_add)) {
+
+$itemname = $_POST['itemname'];
+$category = $_POST['category'];
+$unitofmeasurement = $_POST['unitofmeasurement'];
+if (!empty($itemname) || !empty($category) || !empty($unitofmeasurement)) {
  $host = "localhost";
     $dbUsername = "root";
     $dbPassword = "";
@@ -10,19 +13,19 @@ if (!empty($uom_add)) {
     if (mysqli_connect_error()) {
      die('Connect Error('. mysqli_connect_errno().')'. mysqli_connect_error());
     } else {
-     $SELECT = "SELECT uom_add From adduom Where uom_add = ? Limit 1";
-     $INSERT = "INSERT Into adduom (uom_add) values(?)";
+     $SELECT = "SELECT itemname From inventory Where itemname = ? Limit 1";
+     $INSERT = "INSERT Into inventory (itemname, category, unitofmeasurement) values(?, ?, ?)";
      //Prepare statement
      $stmt = $conn->prepare($SELECT);
-     $stmt->bind_param("s", $uom_add);
+     $stmt->bind_param("s", $itemname);
      $stmt->execute();
-     $stmt->bind_result($uom_add);
+     $stmt->bind_result($itemname);
      $stmt->store_result();
      $rnum = $stmt->num_rows;
      if ($rnum==0) {
       $stmt->close();
       $stmt = $conn->prepare($INSERT);
-      $stmt->bind_param("s", $uom_add);
+      $stmt->bind_param("sss", $itemname, $category, $unitofmeasurement);
       $stmt->execute();
       header("Location: http://localhost/master/examples/Inventory.php");
 exit();
@@ -36,4 +39,5 @@ exit();
  echo "All field are required";
  die();
 }
+
 ?>

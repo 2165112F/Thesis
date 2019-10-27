@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Add Measurement
+    Cancel
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -15,7 +15,7 @@
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
   <!-- CSS Files -->
   <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="../assets/css/paper-dashboard.css" rel="stylesheet" />
+  <link href="../assets/css/paper-dashboard.css?v=2.0.0" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
 </head>
@@ -54,8 +54,8 @@
             </a>
           </li>
           <li>
-            <a href="./menu.php">
-              <i class="nc-icon nc-tile-56"></i>
+            <a href="./Menu.php">
+              <i class="nc-icon nc-bank"></i>
               <p>Menu</p>
             </a>
           </li>
@@ -71,15 +71,15 @@
               <p>Returns</p>
             </a>
           </li>
-          <li>
-            <a href="./cancels.php">
+          <li class = "active">
+            <a href="./cancels.html">
               <i class="nc-icon nc-tile-56"></i>
               <p>Cancel</p>
             </a>
           </li>
           </li>
           <li>
-            <a href="./notifications.php">
+            <a href="./notifications.html">
               <i class="nc-icon nc-bell-55"></i>
               <p>Notifications</p>
             </a>
@@ -162,42 +162,81 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title">Add Measurement</h4>
+                <h4 class="card-title">Cancel</h4>
               </div>
               <div class="col-md-3 px-1">
               <div class="form-group">
+                <label>Show per page</label>
+              <select id = "page" class="form-control" placeholder="Number" value=" ">
+               <option value = "1">5</option>
+               <option value = "2">10</option>
+               <option value = "3">15</option>
+               <option value = "4">20</option>
+             </select>
               </div>
             </div>
               <div class="card-body">
         <div class="table-responsive">
-          <form action = "uomadd.php" method="POST">
-                <tr>
-                  <td> 
-                    Measurement :
-                  </td>
-                  <td>
-                    <input type ="text" name="uom_add">
-                  </td> 
-                  <td>              
-                    <button type="submit" class="btn btn-primary btn-round">Add</button>
-                    <a href = "Inventory.php"><button type="button" class="btn btn-primary btn-round">Cancel</button></a>
-                  </td>
-                </tr>
-              </form>
-              <td>
-                  </td>
-    <?php
-    $conn = mysqli_connect("localhost","root", "", "finaldatabase");
-    if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+          
+                  <table class="table">
+                    <thead class="text-primary">
+                      <th>
+                        ID
+                      </th>
+                      <th>
+                        Order
+                      </th>
+                      <th>
+                        Status
+                      </th>
+                    </thead>
+                    <tbody>
+                		<tbody>
+					  <?php
+                          $conn = mysqli_connect("localhost","root", "", "finaldatabase");
+                          if ($conn->connect_error) {
+                          die("Connection failed: " . $conn->connect_error);
+                          }
+                          
+                          $sql = "SELECT cancel_order, status, cancel_id From cancel";
+                          $result = $conn->query($sql);
+                          if ($result->num_rows > 0) {
+                          // output data of each row
+                           while($row = $result->fetch_assoc()) {
+                        echo "<tr><td class = text-center>" . $row["cancel_id"] . "</td><td class = text-center>"
+                        . $row["cancel_order"]. "</td><td class = text-center>" . $row["status"]. "</td><td class = text-center>" . "</td></tr>";
     }
-    
-    $sql = "SELECT uom_add from adduom";
-    $result = $conn->query($sql);
-    if ($result->num_rows > 0) {
-    } else { echo "0 results"; }
-    $conn->close();
-    ?>
+                          echo "</table>";
+                          } else { echo "0 results"; }
+                          $conn->close();
+                        ?>				  
+                    </tbody>
+                  </table>
+                </div>
+                            <div class="row">
+              <div class="update ml-auto mr-auto">
+                <button class="btn btn-primary btn-round" onclick="openForm()">Add Cancel</button>
+                <div class="form-popup" id="myForm">
+                            <form action="canceldb.php" method="post" class="form-container">
+                              <label for="psw"><b>Order</b></label><br>
+                              <input type="text" name="cancel_order" placeholder="order"><br>
+                              <label for="rem"><b>Status</b></label><br>
+                              <input type="text" name="status" placeholder="status"><br>
+
+
+                              <button type="submit" class="btn btn-primary btn-round">Save</button>
+                              <button type="button" class="btn btn-primary btn-round" onclick="closeForm()">Cancel</button>
+                            </form>
+                </div>
+                  <script>
+                    function openForm() {
+                      document.getElementById("myForm").style.display = "block";
+                    }
+
+                    function closeForm() {
+                      document.getElementById("myForm").style.display = "none";
+                    }
+                  </script>
               </div>
             </div> 
               </div>
@@ -226,3 +265,4 @@
 </body>
 
 </html>
+
