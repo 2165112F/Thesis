@@ -196,8 +196,8 @@
                     <option value="groceries" required>Groceries
                     <option value="can goods" required>Can Goods
                   </select>
-                  <a href = "adduom.php"><img src = "../image/plus.png" style = "width: 22px"></a>
-                  <a href="deleteuom.php"><img src="../image/garbage.png" style="width: 22px"></a>
+                  <a href = ""><img src = "../image/plus.png" style = "width: 22px"></a>
+                  <a href=""><img src="../image/garbage.png" style="width: 22px"></a>
                   </td>
                 </tr>
                 <tr>
