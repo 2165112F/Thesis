@@ -33,7 +33,7 @@
           </div>
         </a>
         <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-          Creative Tim
+          Fork N' Dagger
           <!-- <div class="logo-image-big">
             <img src="../assets/img/logo-big.png">
           </div> -->
@@ -99,7 +99,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="#pablo">Paper Dashboard 2</a>
+            <a class="navbar-brand" href="#pablo">Cancel Order</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -176,23 +176,17 @@
               </div>
             </div>
               <div class="card-body">
-        <div class="table-responsive">
+                <div class="table-responsive">
           
                   <table class="table">
                     <thead class="text-primary">
-                      <th>
-                        ID
-                      </th>
-                      <th>
-                        Order
-                      </th>
-                      <th>
-                        Status
-                      </th>
+                      <th>Menu Name</th>
+                      <th>Quantity</th>
+                      <th>Remarks</th>
                     </thead>
                     <tbody>
                 		<tbody>
-					  <?php
+					              <?php
                           $conn = mysqli_connect("localhost","root", "", "finaldatabase");
                           if ($conn->connect_error) {
                           die("Connection failed: " . $conn->connect_error);
@@ -203,9 +197,9 @@
                           if ($result->num_rows > 0) {
                           // output data of each row
                            while($row = $result->fetch_assoc()) {
-                        echo "<tr><td class = text-center>" . $row["cancel_id"] . "</td><td class = text-center>"
-                        . $row["cancel_order"]. "</td><td class = text-center>" . $row["status"]. "</td><td class = text-center>" . "</td></tr>";
-    }
+                          echo "<tr><td class = text-center>" . $row["cancel_id"] . "</td><td class = text-center>"
+                          . $row["cancel_order"]. "</td><td class = text-center>" . $row["status"]. "</td><td class = text-center>" . "</td></tr>";
+                          }
                           echo "</table>";
                           } else { echo "0 results"; }
                           $conn->close();
@@ -213,32 +207,32 @@
                     </tbody>
                   </table>
                 </div>
-                            <div class="row">
-              <div class="update ml-auto mr-auto">
-                <button class="btn btn-primary btn-round" onclick="openForm()">Add Cancel</button>
-                <div class="form-popup" id="myForm">
-                            <form action="canceldb.php" method="post" class="form-container">
-                              <label for="psw"><b>Order</b></label><br>
-                              <input type="text" name="cancel_order" placeholder="order"><br>
-                              <label for="rem"><b>Status</b></label><br>
-                              <input type="text" name="status" placeholder="status"><br>
+                <div class="row">
+                  <div class="update ml-auto mr-auto">
+                    <button class="btn btn-primary btn-round" onclick="openForm()">Cancel Orders</button>
+                    <div class="form-popup" id="myForm">
+                      <form action="canceldb.php" method="post" class="form-container">
+                        <label for="psw"><b>Menu Name</b></label><br>
+                        <input type="text" name="cancel_order"><br>
+                        <label for="rem"><b>Qantity</b></label><br>
+                        <input type="text" name="status"><br>
+                        <label for="rem"><b>Remarks</b></label><br>
+                        <input type="text" name="status"><br>
+                        <button type="submit" class="btn btn-primary btn-round">Save</button>
+                        <button type="button" class="btn btn-primary btn-round" onclick="closeForm()">Cancel</button>
+                      </form>
+                    </div>
+                      <script>
+                        function openForm() {
+                          document.getElementById("myForm").style.display = "block";
+                        }
 
-
-                              <button type="submit" class="btn btn-primary btn-round">Save</button>
-                              <button type="button" class="btn btn-primary btn-round" onclick="closeForm()">Cancel</button>
-                            </form>
-                </div>
-                  <script>
-                    function openForm() {
-                      document.getElementById("myForm").style.display = "block";
-                    }
-
-                    function closeForm() {
-                      document.getElementById("myForm").style.display = "none";
-                    }
-                  </script>
-              </div>
-            </div> 
+                        function closeForm() {
+                          document.getElementById("myForm").style.display = "none";
+                        }
+                      </script>
+                  </div>
+                </div> 
               </div>
             </div>
           </div>

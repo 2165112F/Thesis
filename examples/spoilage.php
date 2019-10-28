@@ -33,7 +33,7 @@
           </div>
         </a>
         <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-          Creative Tim
+          Fork N' Dagger
           <!-- <div class="logo-image-big">
             <img src="../assets/img/logo-big.png">
           </div> -->
@@ -99,7 +99,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="#pablo">Paper Dashboard 2</a>
+            <a class="navbar-brand" href="#pablo">Spoilage</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -175,22 +175,15 @@
              </select>
               </div>
             </div>
-              <div class="card-body">
-        <div class="table-responsive">
-          
-                  <table class="table">
-                    <thead class="text-primary">
-                      <th>
-                        ID
-                      </th>
-                      <th>
-                        Date
-                      </th>
-                      <th>
-                        Category
-                      </th>
-                    </thead>
-                    <tbody>
+            <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead class="text-primary">
+                        <th>ID</th>
+                        <th>Date</th>
+                        <th>Item Name</th>
+                      </thead>
+                      <tbody>
                         <?php
                           $conn = mysqli_connect("localhost","root", "", "finaldatabase");
                           if ($conn->connect_error) {
@@ -202,9 +195,10 @@
                           if ($result->num_rows > 1) {
                           // output data of each row
                            while($row = $result->fetch_assoc()) {
-                        echo "<tr><td class = text-center>" . $row["spoilage_id"] . "</td><td class = text-center>"
-    . $row["spoilage_date"]. "</td><td class = text-center>" . $row["category"]. "</td><td class = text-center>" . "</td></tr>";
-    }
+                          echo "<tr><td class = text-center>" . $row["spoilage_id"] . "</td><td class = text-center>"
+                          . $row["spoilage_date"]. "</td><td class = text-center>" . $row["category"]
+                          . "</td><td class = text-center>" . "</td></tr>";
+                          }
                           echo "</table>";
                           } else { echo "0 results"; }
                           $conn->close();
@@ -213,31 +207,31 @@
                     </table>
                   </div>
                             <div class="row">
-              <div class="update ml-auto mr-auto">
-                <button class="btn btn-primary btn-round" onclick="openForm()">Update Quantity</button>
-                <div class="form-popup" id="myForm">
-                            <form action="spoilagedb.php" class="form-container" method="POST">
-                              <label for="email"><b>Date</b></label><br>
-                              <input type="text" name="spoilage_date" required><br>
+                  <div class="update ml-auto mr-auto">
+                    <button class="btn btn-primary btn-round" onclick="openForm()">Update Quantity</button>
+                      <div class="form-popup" id="myForm">
+                          <form action="spoilagedb.php" class="form-container" method="POST">
+                            <label for="email"><b>Date</b></label><br>
+                            <input type="text" name="spoilage_date" required><br>
 
-                              <label for="psw"><b>Category</b></label><br>
-                              <input type="text" name="category" required><br><br>
+                            <label for="psw"><b>Category</b></label><br>
+                            <input type="text" name="category" required><br><br>
 
-                              <a href = “spoilage.php”><button type="submit" class="btn btn-primary btn-round">Save</button>
-                              <button type="button" class="btn btn-primary btn-round" onclick="closeForm()">Cancel</button>
-                            </a></form>
-                </div>
-                <script>
-                    function openForm() {
-                      document.getElementById("myForm").style.display = "block";
-                    }
+                            <a href = “spoilage.php”><button type="submit" class="btn btn-primary btn-round">Save</button>
+                            <button type="button" class="btn btn-primary btn-round" onclick="closeForm()">Cancel</button></a>
+                          </form>
+                      </div>
+                      <script>
+                        function openForm() {
+                          document.getElementById("myForm").style.display = "block";
+                        }
 
-                    function closeForm() {
-                      document.getElementById("myForm").style.display = "none";
-                    }
-                  </script>
-              </div>
-            </div> 
+                        function closeForm() {
+                          document.getElementById("myForm").style.display = "none";
+                        }
+                      </script>
+                  </div>
+                </div> 
               </div>
             </div>
           </div>

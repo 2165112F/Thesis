@@ -160,7 +160,7 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-				<h4 class="card-title"> Menu</h4>
+				        <h4 class="card-title"> Menu</h4>
               </div>
               <div class="card-body">
 				<div class="table-responsive">
@@ -183,6 +183,8 @@
                         </td>
                         <td>
                           Okra,ampalaya,fish sauce,onion,garlic,pork 
+                        </td>
+                        <td>
                         </td>
                       </tr>
                     </tbody>
