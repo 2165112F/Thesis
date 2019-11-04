@@ -36,4 +36,5 @@ exit();
  echo "All field are required";
  die();
 }
+
 ?>

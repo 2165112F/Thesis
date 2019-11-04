@@ -189,21 +189,15 @@
                     Category :
                   </td>
                   <td>
-                  <?php
-                    $mysql = NEW MYSQLi('localhost', 'root','','finaldatabase');
-                    $categ = $mysql->query("SELECT category_add from categ"); 
-                    ?>
-                    <select name = "category" onmousedown = "if(this.options.length>5){this.size=5;}" onchange = "this.blur()" onblur="this.size=0;">
+                    <select name = "category">
                     <option value = "" disabled selected>Select Category</option>
-                                        <?php
-                    while($rows = $categ->fetch_assoc()){
-                      $category_add = $rows['category_add'];
-                      echo "<option value ='$category_add'>$category_add</option>";
-                    } 
-                    ?>
+                    <option value="wet goods" required>Wet Goods
+                    <option value="dry goods" required>Dry Goods
+                    <option value="groceries" required>Groceries
+                    <option value="can goods" required>Can Goods
                   </select>
-                  <a href = "addcat.php"><img src = "../image/plus.png" style = "width: 22px"></a>
-                  <a href="deletecat.php"><img src="../image/garbage.png" style="width: 22px"></a>
+                  <a href = ""><img src = "../image/plus.png" style = "width: 22px"></a>
+                  <a href=""><img src="../image/garbage.png" style="width: 22px"></a>
                   </td>
                 </tr>
                 <tr>

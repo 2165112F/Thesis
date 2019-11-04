@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Add Measurement
+    Spoilage
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -59,7 +59,7 @@
               <p>Menu</p>
             </a>
           </li>
-          <li>
+          <li class = "active">
             <a href="./spoilage.php">
               <i class="nc-icon nc-tile-56"></i>
               <p>Spoilage</p>
@@ -178,14 +178,12 @@
                   <td>
                     <input type ="text" name="uom_add">
                   </td> 
-                  <td>              
-                    <button type="submit" class="btn btn-primary btn-round">Add</button>
-                    <a href = "Inventory.php"><button type="button" class="btn btn-primary btn-round">Cancel</button></a>
+                  <td>
+                    <button type="submit" class="btn btn-primary btn-round">Save</button>
+                    <button type="cancel" class="btn btn-primary btn-round">Cancel</button> 
                   </td>
                 </tr>
               </form>
-              <td>
-                  </td>
     <?php
     $conn = mysqli_connect("localhost","root", "", "finaldatabase");
     if ($conn->connect_error) {

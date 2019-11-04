@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Delete Measurement
+    Spoilage
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -59,7 +59,7 @@
               <p>Menu</p>
             </a>
           </li>
-          <li>
+          <li class = "active">
             <a href="./spoilage.php">
               <i class="nc-icon nc-tile-56"></i>
               <p>Spoilage</p>
@@ -180,7 +180,7 @@
                     $mysqli = NEW MYSQLi('localhost', 'root','','finaldatabase');
                     $resultSet = $mysqli->query("SELECT uom_add from adduom"); 
                     ?>
-                    <select name = "uom_add" onmousedown = "if(this.options.length>5){this.size=5;}" onchange = "this.blur()" onblur="this.size=0;">
+                    <select name = "unitofmeasurement" onmousedown = "if(this.options.length>5){this.size=5;}" onchange = "this.blur()" onblur="this.size=0;">
                     <option value = "" disabled selected>Select UOM</option>
                     <?php
                     while($rows = $resultSet->fetch_assoc()){
@@ -191,7 +191,7 @@
                 </select>
                   <td>
                     <button type="submit" class="btn btn-primary btn-round">Delete</button>
-                    <a href = "Inventory.php"><button type="button" class="btn btn-primary btn-round">Cancel</button></a>
+                    <button type="cancel" class="btn btn-primary btn-round">Cancel</button> 
                   </td>
                 </tr>
               </form>
