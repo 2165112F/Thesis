@@ -1,5 +1,5 @@
 <?php
-$uom_add = $_POST['uom_add'];
+ $category_add = $_POST['category_add'];
 
  $host = "localhost";
     $dbUsername = "root";
@@ -13,7 +13,7 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$sql = "DELETE FROM `adduom` WHERE `uom_add` = '$uom_add'";
+$sql = "DELETE FROM categ WHERE category_add = '$category_add' ";
 
 if (mysqli_query($conn, $sql)) {
       header("Location: http://localhost/master/examples/Inventory.php");

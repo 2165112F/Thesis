@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Add Measurement
+    Delete Category
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -162,7 +162,7 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title">Add Measurement</h4>
+                <h4 class="card-title">Delete Category</h4>
               </div>
               <div class="col-md-3 px-1">
               <div class="form-group">
@@ -170,34 +170,31 @@
             </div>
               <div class="card-body">
         <div class="table-responsive">
-          <form action = "uomadd.php" method="POST">
+          <form action = "catdelete.php" method="POST">
                 <tr>
-                  <td> 
-                    Measurement :
+                  <td>
+                    Delete Category :
                   </td>
                   <td>
-                    <input type ="text" name="uom_add">
-                  </td> 
-                  <td>              
-                    <button type="submit" class="btn btn-primary btn-round">Add</button>
+                  <?php
+                    $mysql = NEW MYSQLi('localhost', 'root','','finaldatabase');
+                    $categ = $mysql->query("SELECT category_add from categ"); 
+                    ?>
+                    <select name = "category_add" onmousedown = "if(this.options.length>5){this.size=5;}" onchange = "this.blur()" onblur="this.size=0;">
+                    <option value = "" disabled selected>Select Category</option>
+                    <?php
+                    while($rows = $categ->fetch_assoc()){
+                      $category_add = $rows['category_add'];
+                      echo "<option value ='$category_add'>$category_add</option>";
+                    } 
+                    ?>
+                  </select>
+                  <td>
+                    <button type="submit" class="btn btn-primary btn-round">Delete</button>
                     <a href = "Inventory.php"><button type="button" class="btn btn-primary btn-round">Cancel</button></a>
                   </td>
                 </tr>
               </form>
-              <td>
-                  </td>
-    <?php
-    $conn = mysqli_connect("localhost","root", "", "finaldatabase");
-    if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-    }
-    
-    $sql = "SELECT uom_add from adduom";
-    $result = $conn->query($sql);
-    if ($result->num_rows > 0) {
-    } else { echo "0 results"; }
-    $conn->close();
-    ?>
               </div>
             </div> 
               </div>

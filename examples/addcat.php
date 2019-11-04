@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Add Measurement
+    Add Category
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -162,7 +162,7 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title">Add Measurement</h4>
+                <h4 class="card-title">Add Category</h4>
               </div>
               <div class="col-md-3 px-1">
               <div class="form-group">
@@ -170,16 +170,16 @@
             </div>
               <div class="card-body">
         <div class="table-responsive">
-          <form action = "uomadd.php" method="POST">
+          <form action = "catadd.php" method="POST">
                 <tr>
                   <td> 
-                    Measurement :
+                    Category :
                   </td>
                   <td>
-                    <input type ="text" name="uom_add">
+                    <input type ="text" name="category_add">
                   </td> 
                   <td>              
-                    <button type="submit" class="btn btn-primary btn-round">Add</button>
+                    <button type="submit" class="btn btn-primary btn-round">Add</button>                    
                     <a href = "Inventory.php"><button type="button" class="btn btn-primary btn-round">Cancel</button></a>
                   </td>
                 </tr>
@@ -192,7 +192,7 @@
     die("Connection failed: " . $conn->connect_error);
     }
     
-    $sql = "SELECT uom_add from adduom";
+    $sql = "SELECT category_add from categ";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
     } else { echo "0 results"; }
